@@ -17,7 +17,7 @@ public class BulletScript : MonoBehaviour
     }
     private void Update()
     {
-        rb.AddForce(movement.moveDirection * bulletSpeed);
+        rb.AddForce(movement.moveDirection * bulletSpeed, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)

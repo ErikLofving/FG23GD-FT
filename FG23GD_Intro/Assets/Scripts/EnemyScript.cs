@@ -1,32 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyScript : MonoBehaviour
 {
+    //Enemy Health Values
+    [SerializeField] private float enemyHealth = 100f;
+    [SerializeField] private float currentHealth;
 
-    [SerializeField] private float enemyHealth = 100;
+    //Enemy HealthBar
+    [SerializeField] private Slider slider;
+    [SerializeField] private Camera cam;
+    [SerializeField] private Transform target;
+    [SerializeField] private Vector3 sliderOffset;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        currentHealth = enemyHealth;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        UpdateHealthBar();
+        slider.transform.rotation = cam.transform.rotation;
+        slider.transform.position = target.position + sliderOffset;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            enemyHealth = enemyHealth - 10f;
-
+            currentHealth = currentHealth - 10f;
         }
     }
 
+    public void UpdateHealthBar()
+    {
+        slider.value = currentHealth / enemyHealth;
+    }
 
 }
