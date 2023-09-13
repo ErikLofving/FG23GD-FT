@@ -14,10 +14,17 @@ public class BulletScript : MonoBehaviour
     private void Start()
     {
        rb = GetComponent<Rigidbody>();
+       rb.AddForce(Vector3.forward * bulletSpeed, ForceMode.Impulse);
     }
+
+    private void FixedUpdate()
+    {
+       
+    }
+
     private void Update()
     {
-        rb.AddForce(movement.moveDirection * bulletSpeed, ForceMode.Impulse);
+        
     }
 
     private void OnCollisionEnter(Collision collision)
