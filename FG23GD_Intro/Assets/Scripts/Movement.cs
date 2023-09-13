@@ -8,9 +8,9 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
 
-    [SerializeField] private Transform cam;
+    [SerializeField] public Transform cam;
 
-    private Rigidbody rb;
+    public Rigidbody rb;
 
     [SerializeField] private int speed = 4;
     [SerializeField] private float jumpforce = 50;
@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour
     private Vector3 playerinput;
     public Vector3 moveDirection;
 
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -79,6 +80,7 @@ public class Movement : MonoBehaviour
         Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
         transform.rotation = playerRotation;
+        
     }
 
     private void OnCollisionEnter(Collision collision)

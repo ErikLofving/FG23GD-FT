@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
 
-    Movement movement;
     Rigidbody rb;
 
     [SerializeField] private float bulletSpeed = 20f;
@@ -14,17 +14,7 @@ public class BulletScript : MonoBehaviour
     private void Start()
     {
        rb = GetComponent<Rigidbody>();
-       rb.AddForce(Vector3.forward * bulletSpeed, ForceMode.Impulse);
-    }
-
-    private void FixedUpdate()
-    {
-       
-    }
-
-    private void Update()
-    {
-        
+       rb.AddRelativeForce(Vector3.forward * bulletSpeed, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)
