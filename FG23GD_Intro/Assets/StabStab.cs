@@ -12,6 +12,7 @@ public class StabStab : MonoBehaviour
 
     private float StabStabHealth;
     private bool isHealing;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -24,39 +25,36 @@ public class StabStab : MonoBehaviour
     {
         StabStabHealth = health.currentHealth;
         
-        if (StabStabHealth == 0f)
-        {
-            isHealing = true;
-        }
-        else
-        {
-            isHealing = false;
-        }
+        
 
-
-        if (isHealing)
+        if (health.currentHealth <= 0.0f && !isHealing)
         {
-            WaitToHeal();
-            health.currentHealth = health.enemyHealth;
+            DisableNavmesh();
+            StartCoroutine(WaitingTime());
         }
-
 
     }
 
-
-    private void WaitToHeal()
-    {      
+    private void DisableNavmesh()
+    {
+            
             enemyNavmesh.enabled = false;
-            StartCoroutine(WaitingTime());
+            
     }
 
     IEnumerator WaitingTime()
     {
+        isHealing = true;
+        while (StabStabHealth < health.enemyHealth)
+        {
 
-        yield return new WaitForSeconds(5);
+            health.currentHealth++;
+            yield return new WaitForSeconds(0.1f);
+            
+        }
+
         enemyNavmesh.enabled = true;
-        
-        Debug.Log("Healed");
+        isHealing = false;
 
     }
 
