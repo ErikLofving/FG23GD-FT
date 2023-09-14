@@ -16,8 +16,8 @@ public class PlayerShooting : MonoBehaviour
         if(Input.GetButtonDown("Fire1"))
         {
 
-            Debug.Log("Skjuter");
-            spawnBullet();
+            //Debug.Log("Skjuter");
+            spawnBullet();  
         }
 
     }

@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class EnemyScript : MonoBehaviour
 {
     //Enemy Health Values
-    [SerializeField] private float enemyHealth = 100f;
-    [SerializeField] private float currentHealth;
+    [SerializeField] public float enemyHealth = 100f;
+    [SerializeField] public float currentHealth;
 
     //Enemy HealthBar
     [SerializeField] private Slider slider;
@@ -23,6 +23,8 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
         UpdateHealthBar();
+
+        //Changes Sliders Rotation to be the same as the camera rotation so that it always faces the camera
         slider.transform.rotation = cam.transform.rotation;
         slider.transform.position = target.position + sliderOffset;
     }

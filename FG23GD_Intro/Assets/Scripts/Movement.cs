@@ -107,7 +107,9 @@ public class Movement : MonoBehaviour
 
     private void jump()
     {
-        rb.AddForce(Vector3.up * jumpforce, ForceMode.Impulse);
+
+        rb.velocity = new Vector3(rb.velocity.x, jumpforce, rb.velocity.z);
+        //rb.AddForce(vector3.up * jumpforce, forcemode.impulse);
         jumpAmount--;
     }
 }
