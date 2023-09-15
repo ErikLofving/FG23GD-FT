@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class PlayerKnockBack : MonoBehaviour
 {
@@ -21,7 +18,9 @@ public class PlayerKnockBack : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            rb.velocity = rb.velocity + new Vector3(-movement.moveDirection.x * 10, rb.velocity.y, -movement.moveDirection.z * 10);
+            rb.AddForce(rb.velocity * -1 * knockBackForce, ForceMode.Impulse); 
+
+            Debug.Log("KnockingBack");
         }
     }
 

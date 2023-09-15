@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
 {
 
     [SerializeField] private float characterMaxHealth = 100f;
-    [SerializeField] private float characterCurrentHealth;
+    [SerializeField] public float characterCurrentHealth;
 
     [SerializeField] private Slider slider;
 
@@ -20,6 +20,10 @@ public class Health : MonoBehaviour
     private void Update()
     {
         UpdateHealthBar();
+        if (characterCurrentHealth > characterMaxHealth)
+        {
+            characterCurrentHealth = characterMaxHealth;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
