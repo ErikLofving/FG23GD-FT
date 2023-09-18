@@ -11298,6 +11298,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &768974103
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768974098}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 18.856548, y: 2.3913014, z: 13.912279}
+  m_Center: {x: 0, y: -0.17530529, z: -3.992318}
 --- !u!1 &770514266 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dd05a1d57dc608543bff0dd142ba33d8, type: 3}
@@ -12301,6 +12322,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hammer
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 651f114a0e3700b499efbebc82cce396, type: 3}
+      propertyPath: m_TagString
+      value: Hammer
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12308,6 +12333,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 651f114a0e3700b499efbebc82cce396, type: 3}
       insertIndex: -1
       addedObject: {fileID: 768974102}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 651f114a0e3700b499efbebc82cce396, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 768974103}
   m_SourcePrefab: {fileID: 100100000, guid: 651f114a0e3700b499efbebc82cce396, type: 3}
 --- !u!43 &1107741797
 Mesh:
@@ -14092,7 +14120,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974123837}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.04063687, y: -0.013959641, z: -0.00056780066, w: 0.9990763}
+  m_LocalRotation: {x: -0.04063687, y: -0.013959642, z: -0.00056780066, w: 0.9990763}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
