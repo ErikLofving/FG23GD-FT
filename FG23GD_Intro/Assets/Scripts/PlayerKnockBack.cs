@@ -2,12 +2,11 @@ using UnityEngine;
 
 public class PlayerKnockBack : MonoBehaviour
 {
+    Movement movement;
 
     [SerializeField] Rigidbody rb;
 
     [SerializeField] private int knockBackForce;
-
-    Movement movement;
 
     void Start()
     {
@@ -18,7 +17,7 @@ public class PlayerKnockBack : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            rb.AddForce(rb.velocity * -1 * knockBackForce, ForceMode.Impulse); 
+            rb.AddForce(new Vector3(movement.moveDirection.x * -100, 0, 0), ForceMode.Impulse); 
 
             Debug.Log("KnockingBack");
         }

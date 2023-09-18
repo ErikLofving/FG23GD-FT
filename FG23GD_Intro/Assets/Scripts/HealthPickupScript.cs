@@ -46,7 +46,7 @@ public class HealthPickupScript : MonoBehaviour
         meshRenderer.enabled = true;
         boxCollider.enabled = true;
 
-        Debug.Log("Repspawnar!");
+        //Debug.Log("Repspawnar!");
 
     }
 
