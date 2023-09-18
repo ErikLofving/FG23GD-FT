@@ -7,12 +7,14 @@ public class BulletScript : MonoBehaviour
 {
 
     Rigidbody rb;
+   
 
     [SerializeField] private float bulletSpeed = 20f;
 
     // Start is called before the first frame update
     private void Start()
     {
+       
        rb = GetComponent<Rigidbody>();
        rb.AddRelativeForce(Vector3.forward * bulletSpeed, ForceMode.Impulse);
     }
@@ -21,9 +23,17 @@ public class BulletScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+           
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.tag == "Ground")
+        {
+
             Destroy(gameObject);
         }
     }
 
+   
 
 }

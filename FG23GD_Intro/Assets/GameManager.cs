@@ -5,7 +5,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    KeyScript key;
+    [SerializeField] KeyScript key;
+    [SerializeField] DoorScript door;
+
+    public bool keyPickedUp = false;
+
 
     // Start is called before the first frame update
     void Start()

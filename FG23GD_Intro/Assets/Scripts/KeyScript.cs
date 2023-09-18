@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class KeyScript : MonoBehaviour
 {
+
+    [SerializeField] private GameManager gameManager;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +20,17 @@ public class KeyScript : MonoBehaviour
     {
         
     }
+
+
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            gameManager.keyPickedUp = true;
+            Destroy(gameObject);
+        }
+    }
+
+
 }
