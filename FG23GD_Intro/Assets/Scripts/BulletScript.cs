@@ -17,6 +17,14 @@ public class BulletScript : MonoBehaviour
        
        rb = GetComponent<Rigidbody>();
        rb.AddRelativeForce(Vector3.forward * bulletSpeed, ForceMode.Impulse);
+        transform.rotation = Random.rotation;
+    }
+
+    private void Update()
+    {
+
+        
+        
     }
 
     private void OnCollisionEnter(Collision collision)
