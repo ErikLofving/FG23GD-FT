@@ -16,6 +16,9 @@ public class Movement : MonoBehaviour
     [SerializeField] private float jumpforce = 50;
     [SerializeField] private int rotationSpeed = 25;
 
+    public bool canMove = true;
+
+
     [SerializeField] private int jumpAmount;
     //[SerializeField] private bool isGrounded;
 
@@ -29,6 +32,8 @@ public class Movement : MonoBehaviour
 
         //Locks the cursor in the middle of the screen when clicked in the Game view
         Cursor.lockState = CursorLockMode.Locked;
+        canMove = true;
+
     }
 
     void Update()
@@ -36,7 +41,11 @@ public class Movement : MonoBehaviour
         playerinput.x = Input.GetAxis("Horizontal");
         playerinput.y = Input.GetAxis("Vertical");
 
-        HandleMovement();
+        if (canMove == true)
+        {
+            HandleMovement();
+        }
+ 
     }
 
     private void FixedUpdate()
@@ -53,7 +62,7 @@ public class Movement : MonoBehaviour
         moveDirection.y = 0;
         moveDirection = moveDirection * speed;
 
-        Vector3 movementVelocity = new Vector3( moveDirection.x, rb.velocity.y, moveDirection.z);
+        Vector3 movementVelocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
         rb.velocity = movementVelocity;
 
         if (Input.GetButtonDown("Jump") && jumpAmount > 0)

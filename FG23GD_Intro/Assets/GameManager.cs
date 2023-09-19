@@ -8,18 +8,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] KeyScript key;
     [SerializeField] DoorScript door;
 
-    public bool keyPickedUp = false;
+    public bool keyPickedUp;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        keyPickedUp = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

@@ -12,14 +12,23 @@ public class Health : MonoBehaviour
 
     [SerializeField] private Slider slider;
 
+    [SerializeField] Rigidbody rb;
+
+    [SerializeField] private float knockBackForce;
+    [SerializeField] private float knockBackTime;
+
+    [SerializeField] private Movement movement;
+
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
         characterCurrentHealth = characterMaxHealth;
     }
 
     private void Update()
     {
         UpdateHealthBar();
+
         if (characterCurrentHealth > characterMaxHealth)
         {
             characterCurrentHealth = characterMaxHealth;
@@ -30,13 +39,32 @@ public class Health : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Hammer")
         {
-            characterCurrentHealth = characterCurrentHealth - 10f; 
+            movement.canMove = false;
+            characterCurrentHealth = characterCurrentHealth - 10f;
+
+            
+            Debug.Log("KnockingBack");
+            
+
+            StartCoroutine(DisableKnockBack());
+            
         }
+        
+        
     }
 
     public void UpdateHealthBar()
     {
         slider.value = characterCurrentHealth / characterMaxHealth;
     }
+
+
+    private IEnumerator DisableKnockBack()
+    {
+        rb.AddForce(new Vector3(-movement.moveDirection.x * knockBackForce, movement.moveDirection.y, -movement.moveDirection.z * knockBackForce), ForceMode.Impulse);
+        yield return new WaitForSeconds(knockBackTime);
+        movement.canMove = true;
+    }
+
 
 }
