@@ -24,8 +24,6 @@ public class StabStab : MonoBehaviour
     void Update()
     {
         StabStabHealth = health.currentHealth;
-        
-        
 
         if (health.currentHealth <= 0.0f && !isHealing)
         {
@@ -42,7 +40,7 @@ public class StabStab : MonoBehaviour
             
     }
 
-    IEnumerator WaitingTime()
+    private IEnumerator WaitingTime()
     {
         isHealing = true;
         while (StabStabHealth < health.enemyHealth)
@@ -56,6 +54,23 @@ public class StabStab : MonoBehaviour
         enemyNavmesh.enabled = true;
         isHealing = false;
 
+    }
+
+    public IEnumerator attackedPlayer()
+    {
+        yield return new WaitForSeconds(1);
+        enemyNavmesh.enabled = true;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            DisableNavmesh();
+            StartCoroutine(attackedPlayer());
+            
+            Debug.Log("LOL");
+        }
     }
 
 }
