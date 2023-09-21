@@ -66,8 +66,8 @@ public class StabStab : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            DisableNavmesh();
-            StartCoroutine(attackedPlayer());
+            //DisableNavmesh();
+            //StartCoroutine(attackedPlayer());
             
             Debug.Log("LOL");
         }
