@@ -13,19 +13,11 @@ public class PlayerShooting : MonoBehaviour
 
     [SerializeField] private Transform bulletSpawnLocation;
 
-    private AudioSource m_Audiosource;
+    
 
 
     private float randomBullet;
 
-    private void Start()
-    {
-        m_Audiosource = GetComponent<AudioSource>();
-    }
-
-
-
-    // Update is called once per frame
     private void Update()
     {
         
@@ -53,7 +45,6 @@ public class PlayerShooting : MonoBehaviour
                 spawnBullet4();
             }*/
 
-            m_Audiosource.Play();
 
         }
         

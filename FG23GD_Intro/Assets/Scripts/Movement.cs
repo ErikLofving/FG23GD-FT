@@ -25,7 +25,8 @@ public class Movement : MonoBehaviour
     private Vector3 playerinput;
     public Vector3 moveDirection;
 
-    
+    private AudioSource m_Audiosource;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -33,6 +34,7 @@ public class Movement : MonoBehaviour
         //Locks the cursor in the middle of the screen when clicked in the Game view
         Cursor.lockState = CursorLockMode.Locked;
         canMove = true;
+        m_Audiosource = GetComponent<AudioSource>();
 
     }
 
@@ -67,7 +69,8 @@ public class Movement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && jumpAmount > 0)
         {
-            jump();          
+            jump();
+            m_Audiosource.Play();
         }
     }
 
