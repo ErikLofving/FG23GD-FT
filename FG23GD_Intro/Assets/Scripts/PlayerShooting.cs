@@ -5,16 +5,25 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject bulletPrefab0;
+    [SerializeField] private GameObject bulletPrefab1;
     [SerializeField] private GameObject bulletPrefab2;
     [SerializeField] private GameObject bulletPrefab3;
     [SerializeField] private GameObject bulletPrefab4;
 
     [SerializeField] private Transform bulletSpawnLocation;
 
+    private AudioSource m_Audiosource;
+
 
     private float randomBullet;
+
+    private void Start()
+    {
+        m_Audiosource = GetComponent<AudioSource>();
+    }
+
+
 
     // Update is called once per frame
     private void Update()
@@ -23,7 +32,9 @@ public class PlayerShooting : MonoBehaviour
         if(Input.GetButtonDown("Fire1"))
         {
 
-            randomBullet = Random.Range(1, 200);
+            spawnBullet0();
+
+            /*randomBullet = Random.Range(1, 200);
 
             if (randomBullet <= 50)
 
@@ -40,14 +51,21 @@ public class PlayerShooting : MonoBehaviour
             else if (randomBullet > 151 && randomBullet <= 200)
             {
                 spawnBullet4();
-            }
+            }*/
+
+            m_Audiosource.Play();
+
         }
         
 
     }
+    private void spawnBullet0()
+    {
+        Instantiate(bulletPrefab0, bulletSpawnLocation.transform.position, transform.rotation);
+    }
     private void spawnBullet1()
     {
-        Instantiate(bulletPrefab,bulletSpawnLocation.transform.position, transform.rotation);
+        Instantiate(bulletPrefab1,bulletSpawnLocation.transform.position, transform.rotation);
     }
     private void spawnBullet2()
     {
