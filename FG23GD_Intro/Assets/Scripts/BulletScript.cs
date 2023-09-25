@@ -14,8 +14,8 @@ public class BulletScript : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-       
-       rb = GetComponent<Rigidbody>();
+        FindObjectOfType<AudioManager>().Play("ShootingSound");
+        rb = GetComponent<Rigidbody>();
        rb.AddRelativeForce(Vector3.forward * bulletSpeed, ForceMode.Impulse);
         transform.rotation = Random.rotation;
     }

@@ -25,7 +25,11 @@ public class Movement : MonoBehaviour
     private Vector3 playerinput;
     public Vector3 moveDirection;
 
-    private AudioSource m_Audiosource;
+    [Header("Platform")]
+    [SerializeField] private Transform platformTransform;
+    [SerializeField] private Transform playerTransform;
+
+    
 
     void Start()
     {
@@ -34,7 +38,7 @@ public class Movement : MonoBehaviour
         //Locks the cursor in the middle of the screen when clicked in the Game view
         Cursor.lockState = CursorLockMode.Locked;
         canMove = true;
-        m_Audiosource = GetComponent<AudioSource>();
+        
 
     }
 
@@ -70,7 +74,7 @@ public class Movement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && jumpAmount > 0)
         {
             jump();
-            m_Audiosource.Play();
+            FindObjectOfType<AudioManager>().Play("Jump");
         }
     }
 
@@ -103,7 +107,25 @@ public class Movement : MonoBehaviour
             jumpReset();
         }
         
+        if (collision.gameObject.tag == "Platform")
+        {
+            jumpReset();
+            playerTransform.parent = platformTransform;
+
+        }
+
     }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Platform")
+        {
+
+            playerTransform.parent = null;
+
+        }
+    }
+
     /*private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")

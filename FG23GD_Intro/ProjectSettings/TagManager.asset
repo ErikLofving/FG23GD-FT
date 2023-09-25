@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - HealthPickup
   - Hammer
+  - Platform
   layers:
   - Default
   - TransparentFX
