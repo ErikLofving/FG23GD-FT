@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -35,6 +36,14 @@ public class Health : MonoBehaviour
         {
             characterCurrentHealth = characterMaxHealth;
         }
+
+        if (characterCurrentHealth <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+
     }
 
     private void OnCollisionEnter(Collision collision)
