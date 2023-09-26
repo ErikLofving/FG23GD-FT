@@ -11,6 +11,7 @@ public class KeyScript : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             gameManager.keyPickedUp = true;
+            FindObjectOfType<AudioManager>().Play("KeySound");
             Destroy(gameObject);
         }
     }

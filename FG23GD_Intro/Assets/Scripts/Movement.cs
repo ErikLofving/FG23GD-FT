@@ -25,7 +25,7 @@ public class Movement : MonoBehaviour
     private Vector3 playerinput;
     public Vector3 moveDirection;
 
-    
+    [SerializeField] private ParticleSystem particle;
 
     void Start()
     {
@@ -70,6 +70,9 @@ public class Movement : MonoBehaviour
             jump();
             FindObjectOfType<AudioManager>().Play("Jump");
         }
+
+        
+
     }
 
     private void HandleRotation()
@@ -126,4 +129,7 @@ public class Movement : MonoBehaviour
         //rb.AddForce(vector3.up * jumpforce, forcemode.impulse);
         jumpAmount--;
     }
+
+    
+
 }

@@ -13,11 +13,6 @@ public class PlayerShooting : MonoBehaviour
 
     [SerializeField] private Transform bulletSpawnLocation;
 
-    
-
-
-    private float randomBullet;
-
     private void Update()
     {
         

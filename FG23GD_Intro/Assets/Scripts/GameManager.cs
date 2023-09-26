@@ -10,10 +10,22 @@ public class GameManager : MonoBehaviour
 
     public bool keyPickedUp;
 
+
+    [Header("Player Attributes")]
+    [SerializeField] private MainMenu menu;
+
+    [SerializeField] private GameObject PlayerObject;
+
     private void Start()
     {
         keyPickedUp = false;
     }
 
-
+    private void Update()
+    {
+        if (PlayerObject.transform.position.y < 10)
+        {
+            menu.LostGame();
+        }
+    }
 }

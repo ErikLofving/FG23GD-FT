@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float characterMaxHealth = 100f;
     [SerializeField] public float characterCurrentHealth;
 
-    [SerializeField] private Slider slider;
+    [SerializeField] private Image HealthBarImage;
 
     [SerializeField] Rigidbody rb;
 
@@ -20,6 +20,9 @@ public class Health : MonoBehaviour
     [SerializeField] private float knockBackTime;
 
     [SerializeField] private Movement movement;
+
+    private float lerpSpeed;
+
     
 
     private void Start()
@@ -30,11 +33,17 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
+
+        lerpSpeed = 3f * Time.deltaTime;
+
         UpdateHealthBar();
+        colorChange();
 
         if (characterCurrentHealth > characterMaxHealth)
         {
             characterCurrentHealth = characterMaxHealth;
+
+            
         }
 
         if (characterCurrentHealth <= 0)
@@ -43,7 +52,7 @@ public class Health : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
 
-
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -66,7 +75,15 @@ public class Health : MonoBehaviour
 
     public void UpdateHealthBar()
     {
-        slider.value = characterCurrentHealth / characterMaxHealth;
+        HealthBarImage.fillAmount = Mathf.Lerp(HealthBarImage.fillAmount, (characterCurrentHealth / characterMaxHealth), lerpSpeed);
+    }
+
+    private void colorChange()
+    {
+        Color healthColor = Color.Lerp(Color.red, Color.green, (characterCurrentHealth/characterMaxHealth));
+
+        HealthBarImage.color = healthColor;
+
     }
 
 

@@ -19,6 +19,11 @@ public class MainMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    public void LostGame()
+    {
+        SceneManager.LoadScene(2);
+        Cursor.lockState = CursorLockMode.None;
+    }
 
     public void QuitGame()
     {

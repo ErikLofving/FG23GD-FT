@@ -16,9 +16,15 @@ public class BulletScript : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Play("ShootingSound");
         rb = GetComponent<Rigidbody>();
-       rb.AddRelativeForce(Vector3.forward * bulletSpeed, ForceMode.Impulse);
+        rb.AddRelativeForce(Vector3.forward * bulletSpeed, ForceMode.Impulse);
         transform.rotation = Random.rotation;
+
+        Destroy(this.gameObject, 10);
     }
+
+    
+
+
 
 
     private void OnCollisionEnter(Collision collision)
