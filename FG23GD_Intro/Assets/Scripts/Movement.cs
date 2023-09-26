@@ -25,10 +25,6 @@ public class Movement : MonoBehaviour
     private Vector3 playerinput;
     public Vector3 moveDirection;
 
-    [Header("Platform")]
-    [SerializeField] private Transform platformTransform;
-    [SerializeField] private Transform playerTransform;
-
     
 
     void Start()
@@ -99,30 +95,16 @@ public class Movement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Platform")
         {
             //isGrounded = true;
             jumpReset();
         }
-        
-        if (collision.gameObject.tag == "Platform")
-        {
-            jumpReset();
-            playerTransform.parent = platformTransform;
 
-        }
 
     }
+    
 
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag == "Platform")
-        {
-
-            playerTransform.parent = null;
-
-        }
-    }
 
     /*private void OnCollisionExit(Collision collision)
     {
@@ -132,7 +114,7 @@ public class Movement : MonoBehaviour
         }    
     }*/
 
-    private int jumpReset()
+    public int jumpReset()
     {
         return jumpAmount = 2;
     }

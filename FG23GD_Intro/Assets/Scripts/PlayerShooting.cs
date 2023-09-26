@@ -26,6 +26,8 @@ public class PlayerShooting : MonoBehaviour
 
             spawnBullet0();
 
+            Cursor.lockState = CursorLockMode.Locked;
+
             /*randomBullet = Random.Range(1, 200);
 
             if (randomBullet <= 50)

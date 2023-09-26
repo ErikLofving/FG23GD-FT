@@ -20,12 +20,6 @@ public class BulletScript : MonoBehaviour
         transform.rotation = Random.rotation;
     }
 
-    private void Update()
-    {
-
-        
-        
-    }
 
     private void OnCollisionEnter(Collision collision)
     {

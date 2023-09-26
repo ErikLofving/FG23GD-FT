@@ -10,6 +10,7 @@ TagManager:
   - HealthPickup
   - Hammer
   - Platform
+  - Platform2
   layers:
   - Default
   - TransparentFX

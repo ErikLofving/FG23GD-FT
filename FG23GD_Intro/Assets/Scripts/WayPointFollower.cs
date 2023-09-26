@@ -13,6 +13,8 @@ public class WayPointFollower : MonoBehaviour
 
     [SerializeField] float wayPointSpeed = 1f;
 
+    
+
     void Update()
     {
 
@@ -33,4 +35,6 @@ public class WayPointFollower : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypointIndex].transform.position, wayPointSpeed * Time.deltaTime);
     }
+
+
 }
