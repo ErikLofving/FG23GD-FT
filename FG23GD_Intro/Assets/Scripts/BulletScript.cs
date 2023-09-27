@@ -11,6 +11,8 @@ public class BulletScript : MonoBehaviour
 
     [SerializeField] private float bulletSpeed = 20f;
 
+    private ExplosionSpawn explosionSpawn;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -20,6 +22,8 @@ public class BulletScript : MonoBehaviour
         transform.rotation = Random.rotation;
 
         Destroy(this.gameObject, 10);
+
+        explosionSpawn = GetComponent<ExplosionSpawn>();
     }
 
     
@@ -31,14 +35,16 @@ public class BulletScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-           
+            explosionSpawn.SpawnExplosion();
             Destroy(gameObject);
+            
         }
 
         if (collision.gameObject.tag == "Ground")
         {
-
+            explosionSpawn.SpawnExplosion();
             Destroy(gameObject);
+            
         }
     }
 
