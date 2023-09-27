@@ -19,11 +19,6 @@ public class HealthPickupScript : MonoBehaviour
         boxCollider = GetComponent<Collider>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -34,7 +29,7 @@ public class HealthPickupScript : MonoBehaviour
             boxCollider.enabled = false;
 
             StartCoroutine(Respawn());
-
+            FindObjectOfType<AudioManager>().Play("HealthPickup");
             playerHealth.characterCurrentHealth = playerHealth.characterCurrentHealth + 10;
 
         }

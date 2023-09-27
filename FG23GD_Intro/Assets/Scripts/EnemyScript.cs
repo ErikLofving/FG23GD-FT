@@ -32,14 +32,26 @@ public class EnemyScript : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Bullet")
-        { 
-            currentHealth = currentHealth - 10f;
+        {
+            HitByBullet();
+        }
+        if (collision.gameObject.tag == "Player")
+        {
+            Vector3 hitPoint = collision.contacts[0].point;
+
+            var knocbackDir = transform.position - hitPoint;
+            knocbackDir.Normalize();
+        }
+    }
+
+    private void HitByBullet()
+    {
+        currentHealth = currentHealth - 20f;
 
 
-            if (currentHealth < 0)
-            {
-                currentHealth = 0;
-            }
+        if (currentHealth < 0)
+        {
+            currentHealth = 0;
         }
     }
 

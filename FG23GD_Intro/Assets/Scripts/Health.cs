@@ -23,8 +23,6 @@ public class Health : MonoBehaviour
 
     private float lerpSpeed;
 
-    
-
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -64,9 +62,13 @@ public class Health : MonoBehaviour
 
             
             Debug.Log("KnockingBack");
-            
 
-            StartCoroutine(DisableKnockBack());
+            Vector3 globalPositionOfContact = collision.contacts[0].point;
+
+            var knocbackDir = transform.position - collision.transform.position;
+            knocbackDir.Normalize();
+
+            StartCoroutine(DisableKnockBack(knocbackDir));
             
         }
         
@@ -87,9 +89,9 @@ public class Health : MonoBehaviour
     }
 
 
-    private IEnumerator DisableKnockBack()
+    private IEnumerator DisableKnockBack(Vector3 knocbackDir)
     {
-        rb.AddForce(new Vector3(-movement.moveDirection.x * knockBackForce, movement.moveDirection.y, -movement.moveDirection.z * knockBackForce), ForceMode.Impulse);
+        rb.AddForce(knocbackDir * knockBackForce, ForceMode.Impulse);
         yield return new WaitForSeconds(knockBackTime);
         movement.canMove = true;
     }
